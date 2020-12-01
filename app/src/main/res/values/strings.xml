@@ -2,4 +2,9 @@
     <string name="app_name">AS Vaidik</string>
     <string name="as_vaidik_pvt_ltd">AS Vaidik Pvt Ltd.</string>
     <string name="image">image</string>
+    <string name="home">Home</string>
+    <string name="add">add</string>
+    <string name="profile">Profile</string>
+    <string name="blank" />
+    <string name="fab">fab</string>
 </resources>
