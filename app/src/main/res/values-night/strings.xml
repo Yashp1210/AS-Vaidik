@@ -7,4 +7,5 @@
     <string name="profile">Profile</string>
     <string name="blank" />
     <string name="fab">fab</string>
+    <string name="name">Name</string>
 </resources>
