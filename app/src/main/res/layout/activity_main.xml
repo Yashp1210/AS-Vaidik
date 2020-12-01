@@ -7,23 +7,28 @@
     android:background="@color/ic_launcher_background"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:id="@+id/screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/ic_launcher_background"
+        android:orientation="vertical"></LinearLayout>
+
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/homenav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:backgroundTint="@color/master">
+        app:backgroundTint="@color/ic_launcher_background">
+
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navhome"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginEnd="16dp"
-            android:background="#00FF0808"
-            app:backgroundTint="#00FFFFFF"
-            app:itemIconTint="@color/ic_launcher_background"
-            app:itemTextColor="#FFFFFF"
+            android:background="@drawable/background_nav"
             app:menu="@menu/nav_menu_home_screen" />
-
     </com.google.android.material.bottomappbar.BottomAppBar>
 
 
@@ -32,6 +37,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/fab"
-        android:src="@android:drawable/ic_input_add"
+        android:src="@drawable/ic_baseline_add_24"
+        android:tint="@color/ic_launcher_background"
+        app:backgroundTint="@color/ic_launcher_background"
         app:layout_anchor="@id/homenav" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

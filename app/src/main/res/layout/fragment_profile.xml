@@ -15,7 +15,7 @@
         android:src="@drawable/profile_icon" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/personName"
         android:layout_width="242dp"
         android:layout_height="44dp"
         android:layout_below="@+id/imgUserImage"
