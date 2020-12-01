@@ -24,8 +24,8 @@
         android:paddingTop="20dp"
         android:hint="First Name"
         app:boxBackgroundMode="outline"
-        app:boxCornerRadiusTopStart="16dp"
-        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusTopStart="17dp"
+        app:boxCornerRadiusTopEnd="17dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"        >
 
         <com.google.android.material.textfield.TextInputEditText
