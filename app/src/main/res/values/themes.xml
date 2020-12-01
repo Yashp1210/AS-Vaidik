@@ -3,7 +3,7 @@
     <style name="Theme.ASVaidik" parent="Theme.AppCompat.DayNight">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/master</item>
-        <item name="colorPrimaryVariant">#976812</item>
+        <item name="colorPrimaryVariant">#850000</item>
         <item name="colorOnPrimary">@color/master</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/slave</item>
