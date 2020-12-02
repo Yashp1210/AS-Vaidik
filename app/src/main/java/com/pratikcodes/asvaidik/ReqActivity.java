@@ -24,7 +24,7 @@ public class ReqActivity extends AppCompatActivity {
         tool = findViewById(R.id.reqtool);
         setSupportActionBar(tool);
 
-        //text fields
+
         ename = findViewById(R.id.cname);
         eemail = findViewById(R.id.cmail);
         ephone = findViewById(R.id.cphone);
