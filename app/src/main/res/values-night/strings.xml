@@ -23,4 +23,7 @@
     <string name="pandits">Pandits</string>
     <string name="astrologer">Astrologer</string>
     <string name="description">Description</string>
+    <string name="your_requirements">Your Requirements</string>
+    <string name="requirements">Requirements</string>
+    <string name="as_vaidik">AS Vaidik</string>
 </resources>

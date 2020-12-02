@@ -1,6 +1,7 @@
 package com.pratikcodes.asvaidik;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView nav;
     FloatingActionButton fab;
+    Toolbar tool;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
         nav = findViewById(R.id.navhome);
         fab = findViewById(R.id.fab_req);
+        tool = findViewById(R.id.hometool);
+        setSupportActionBar(tool);
 
         HomeFragment fragment = new HomeFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.screen,fragment).commit();
