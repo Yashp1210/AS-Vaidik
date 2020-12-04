@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -23,39 +24,40 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class SignUpActivity extends AppCompatActivity {
+public class LogInActivity extends AppCompatActivity {
 
-    ImageButton btn_create_account, sign_up_google, btn_sign_in;
-    TextInputLayout emailEntered, passwordEntered, confirmPasswordEntered;
-    private FirebaseAuth mAuth;
-    DatabaseReference databaseReference;
+    private static final int RC_SIGN_IN = 101;
+    ImageButton btn_sign_in, btn_sign_up, btn_google_sign_in;
+    Button btn_forget_password;
+    TextInputLayout emailEntered, passwordEntered;
+    FirebaseAuth mAuth;
+    DatabaseReference mReference;
     FirebaseUser mUser;
     GoogleSignInClient mGoogleSignInClient;
-    private static final int RC_SIGN_IN = 101;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
-
-        btn_create_account = findViewById(R.id.create_account);
-        sign_up_google = findViewById(R.id.google_sign_up);
-        btn_sign_in = findViewById(R.id.sign_in_for_btn);
-        emailEntered = findViewById(R.id.signUp_email);
-        passwordEntered = findViewById(R.id.signUp_password);
-        confirmPasswordEntered = findViewById(R.id.signUp_confirm_password);
-
+        setContentView(R.layout.activity_log_in);
+        btn_sign_in = findViewById(R.id.sign_in);
+        btn_forget_password = findViewById(R.id.forgot_password);
+        btn_google_sign_in = findViewById(R.id.google_sign_in);
+        btn_sign_up = findViewById(R.id.sign_up_btn);
+        emailEntered = findViewById(R.id.logIn_email);
+        passwordEntered = findViewById(R.id.logIn_password);
         mAuth = FirebaseAuth.getInstance();
+        mReference = FirebaseDatabase.getInstance().getReference("users");
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("user");
-
-        btn_create_account.setOnClickListener(new View.OnClickListener() {
+        btn_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                registerUser();
+            public void onClick(View view) {
+                userEmailLoginIn();
             }
         });
 
@@ -64,18 +66,18 @@ public class SignUpActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        sign_up_google.setOnClickListener(new View.OnClickListener() {
+        btn_google_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 signIn();
             }
         });
 
-        btn_sign_in.setOnClickListener(new View.OnClickListener() {
+        btn_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
-                Intent intent = new Intent(SignUpActivity.this, LogInActivity.class);
+                Intent intent = new Intent(LogInActivity.this, SignUpActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
@@ -97,7 +99,7 @@ public class SignUpActivity extends AppCompatActivity {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
-                Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_SHORT);
+                Toast.makeText(LogInActivity.this, e.getMessage(), Toast.LENGTH_SHORT);
             }
         }
     }
@@ -111,10 +113,10 @@ public class SignUpActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(SignUpActivity.this, user.getEmail(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(LogInActivity.this, user.getEmail(), Toast.LENGTH_LONG).show();
                             updateUI(user);
                         } else {
-                            Toast.makeText(SignUpActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LogInActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
                     }
@@ -124,27 +126,20 @@ public class SignUpActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser user) {
         try {
             if (user != null) {
-                userHelper users = new userHelper(user.getEmail());
-                databaseReference.child(mAuth.getCurrentUser().getUid())
-                        .setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        finish();
-                        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                    }
-                });
+                Toast.makeText(LogInActivity.this, "Logged in using google", Toast.LENGTH_SHORT).show();
+                finish();
+                Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         } catch (Error e){
-            Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(LogInActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void registerUser() {
+    private void userEmailLoginIn() {
         final String email = emailEntered.getEditText().getText().toString().trim();
-        String password = passwordEntered.getEditText().getText().toString().trim();
-        String confirmPassword = confirmPasswordEntered.getEditText().getText().toString().trim();
+        final String password = passwordEntered.getEditText().getText().toString().trim();
 
         if(email.isEmpty()){
             emailEntered.setError("Field cannot be empty");
@@ -164,55 +159,42 @@ public class SignUpActivity extends AppCompatActivity {
             return;
         }
 
-        if(confirmPassword.isEmpty()){
-            passwordEntered.setError("Field cannot be empty");
-            passwordEntered.requestFocus();
-            return;
-        }
-
-        if(!confirmPassword.equals(password)){
-            confirmPasswordEntered.setError("Password doesn't match");
-            confirmPasswordEntered.requestFocus();
-            return;
-        }
-
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    userHelper user = new userHelper(email);
-                    databaseReference.child(mAuth.getCurrentUser().getUid())
-                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            sendEmailVerification();
-                        }
-                    });
-                } else {
+                    mReference.child(mAuth.getCurrentUser().getUid())
+                            .addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    checkEmailVerification();
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                } else{
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-    private void sendEmailVerification(){
+    private void checkEmailVerification() {
         mUser = mAuth.getCurrentUser();
-        if(mUser!=null){
-            mUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(SignUpActivity.this, "Successfully registered. Verification mail sent!!", Toast.LENGTH_SHORT).show();
-                        finish();
-                        Intent intent = new Intent(SignUpActivity.this, LogInActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(SignUpActivity.this, "Verification mail hasn't been sent", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+        Boolean emailFlag = mUser.isEmailVerified();
+
+        if(emailFlag){
+            finish();
+            Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Please verify your email", Toast.LENGTH_SHORT).show();
+            mAuth.signOut();
         }
     }
-
 }
+
