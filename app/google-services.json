@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "161286270762",
+    "project_id": "as-vaidik",
+    "storage_bucket": "as-vaidik.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161286270762:android:f73ea64a57aefadc97b853",
+        "android_client_info": {
+          "package_name": "com.pratikcodes.asvaidik"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161286270762-s4nkf7p1nkg2loqd9g16k5g2htqufsqn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAonZJ6X1vY7odBzVDhDUCakz6R53A1YHg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161286270762-s4nkf7p1nkg2loqd9g16k5g2htqufsqn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
