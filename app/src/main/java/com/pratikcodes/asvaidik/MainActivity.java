@@ -2,6 +2,7 @@ package com.pratikcodes.asvaidik;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,6 +31,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.pratikcodes.asvaidik.fragments.HomeFragment;
+import com.pratikcodes.asvaidik.fragments.ProfileFragment;
+
+
 public class MainActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 101;
@@ -41,10 +48,16 @@ public class MainActivity extends AppCompatActivity {
     FirebaseUser mUser;
     GoogleSignInClient mGoogleSignInClient;
 
+
+    BottomNavigationView nav;
+    FloatingActionButton fab;
+    Toolbar tool;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         btn_sign_in = findViewById(R.id.sign_in);
         btn_forget_password = findViewById(R.id.forgot_password);
         btn_google_sign_in = findViewById(R.id.google_sign_in);
@@ -200,3 +213,45 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+=======
+
+        nav = findViewById(R.id.navhome);
+        fab = findViewById(R.id.fab_req);
+        tool = findViewById(R.id.hometool);
+        setSupportActionBar(tool);
+
+        HomeFragment fragment = new HomeFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.screen,fragment).commit();
+
+        nav.setOnNavigationItemSelectedListener(listener);
+
+        fab.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(),ReqActivity.class);
+            startActivity(intent);
+        });
+
+    }
+
+    BottomNavigationView.OnNavigationItemSelectedListener listener = item -> {
+
+        switch(item.getItemId())
+        {
+            case R.id.home:
+                HomeFragment home = new HomeFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.screen,home).commit();
+                break;
+
+            case R.id.add:
+                Intent intent = new Intent(getApplicationContext(),ReqActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.profile:
+                ProfileFragment profile = new ProfileFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.screen,profile).commit();
+                break;
+        }
+        return true;
+    };
+}
+

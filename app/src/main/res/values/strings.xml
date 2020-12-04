@@ -2,4 +2,30 @@
     <string name="app_name">AS Vaidik</string>
     <string name="as_vaidik_pvt_ltd">AS Vaidik Pvt Ltd.</string>
     <string name="image">image</string>
+    <string name="home">Home</string>
+    <string name="add">add</string>
+    <string name="profile">Profile</string>
+    <string name="blank" />
+    <string name="fab">fab</string>
+    <string name="name">Name</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="location">Location</string>
+    <string name="select_the_type">Select the type</string>
+    <string name="android_application">Android Application</string>
+    <string name="website">Website</string>
+    <string name="next">Next</string>
+    <string name="submit">Submit</string>
+    <string name="choose_the_categories_you_want_to_have">Choose the categories you want to have</string>
+    <string name="pooja">Pooja</string>
+    <string name="pooja_accessories">Pooja Accessories</string>
+    <string name="havan_samagri">Havan Samagri</string>
+    <string name="pandits">Pandits</string>
+    <string name="astrologer">Astrologer</string>
+    <string name="description">Description</string>
+    <string name="your_requirements">Your Requirements</string>
+    <string name="requirements">Requirements</string>
+    <string name="as_vaidik">AS Vaidik</string>
 </resources>
