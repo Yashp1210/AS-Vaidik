@@ -2,6 +2,7 @@ package com.pratikcodes.asvaidik;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,11 +20,14 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     ImageButton btn_submit, btn_signUp, btn_resend;
     TextInputLayout email_entered;
     private FirebaseAuth mAuth;
+    Toolbar tool;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password_activity);
+        tool = findViewById(R.id.forgotpasstool);
+        setSupportActionBar(tool);
 
         email_entered = findViewById(R.id.email_forgot_password);
         btn_signUp = findViewById(R.id.sign_up_for_btn);

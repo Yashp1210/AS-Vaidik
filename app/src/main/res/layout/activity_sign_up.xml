@@ -7,12 +7,34 @@
     android:orientation="vertical"
     tools:context=".SignUpActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" >
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/sign_up"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:paddingEnd="16dp"
+            android:textColor="@color/white"/>
+
+
+    </androidx.appcompat.widget.Toolbar>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/create_your_new_account"
         android:layout_margin="8dp"
-        android:padding="8dp"/>
+        android:contentDescription="@string/image"
+        android:padding="8dp"
+        android:src="@drawable/create_your_new_account" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/signUp_email"
@@ -24,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:hint="Email Address"
+            android:hint="@string/email_address"
             android:inputType="textEmailAddress"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -39,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:hint="Confirm Password"
+            android:hint="@string/confirm_password"
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,9 +84,11 @@
         android:id="@+id/create_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/create_account_btn"
         android:background="@color/white"
-        android:clickable="true"/>
+        android:clickable="true"
+        android:contentDescription="@string/image"
+        android:focusable="true"
+        android:src="@drawable/create_account_btn" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -76,18 +100,23 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/vector_1"
-            android:padding="4dp"/>
+            android:contentDescription="@string/image"
+            android:padding="4dp"
+            android:src="@drawable/vector_1" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/vector_or"
-            android:padding="4dp"/>
+            android:contentDescription="@string/image"
+            android:padding="4dp"
+            android:src="@drawable/vector_or" />
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/vector_2"
-            android:padding="4dp"/>
+            android:contentDescription="@string/image"
+            android:padding="4dp"
+            android:src="@drawable/vector_2" />
 
     </LinearLayout>
 
@@ -95,22 +124,27 @@
         android:id="@+id/google_sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/google_sign_in_btn"
         android:background="@color/white"
-        android:clickable="true"/>
+        android:clickable="true"
+        android:contentDescription="@string/image"
+        android:src="@drawable/google_sign_in_btn"
+        android:focusable="true" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/already_have_an_account"
-        android:layout_margin="8dp"/>
+        android:layout_margin="8dp"
+        android:contentDescription="@string/image"
+        android:src="@drawable/already_have_an_account" />
 
     <ImageButton
         android:id="@+id/sign_in_for_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/sign_in"
         android:background="@color/white"
-        android:clickable="true" />
+        android:clickable="true"
+        android:contentDescription="@string/image"
+        android:src="@drawable/sign_in"
+        android:focusable="true" />
 
 </LinearLayout>
