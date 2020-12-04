@@ -75,7 +75,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                Intent intent = new Intent(SignUpActivity.this, LogInActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
@@ -129,10 +129,12 @@ public class SignUpActivity extends AppCompatActivity {
                         .setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(SignUpActivity.this, "no email verification", Toast.LENGTH_SHORT).show();
+                        finish();
+                        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
                     }
                 });
-                Toast.makeText(SignUpActivity.this, "Logged in using google", Toast.LENGTH_SHORT).show();
             }
         } catch (Error e){
             Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -202,7 +204,7 @@ public class SignUpActivity extends AppCompatActivity {
                     if(task.isSuccessful()){
                         Toast.makeText(SignUpActivity.this, "Successfully registered. Verification mail sent!!", Toast.LENGTH_SHORT).show();
                         finish();
-                        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                        Intent intent = new Intent(SignUpActivity.this, LogInActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     } else {
