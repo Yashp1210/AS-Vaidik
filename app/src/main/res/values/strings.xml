@@ -28,4 +28,9 @@
     <string name="your_requirements">Your Requirements</string>
     <string name="requirements">Requirements</string>
     <string name="as_vaidik">AS Vaidik</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="email_address">Email Address</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
 </resources>

@@ -14,7 +14,7 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".MainActivity" />
 
-        <activity android:name=".TeamActivity"></activity>
+        <activity android:name=".TeamActivity" />
         <activity android:name=".SubmitActivity" />
         <activity android:name=".ReqActivity" />
 
@@ -26,7 +26,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
