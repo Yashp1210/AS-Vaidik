@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -25,6 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.pratikcodes.asvaidik.models.UserData;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -75,6 +77,11 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+                final String mail = emailEntered.getEditText().getText().toString().trim();
+                SharedPreferences pref = getSharedPreferences("data",MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString("email", mail);
+                editor.apply();
                 Intent intent = new Intent(SignUpActivity.this, LogInActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

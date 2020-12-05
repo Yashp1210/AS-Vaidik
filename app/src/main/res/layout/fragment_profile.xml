@@ -67,22 +67,23 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/mailet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/etCurrentPassword"
-        android:layout_below="@id/etEmail"
+        android:id="@+id/etphone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/etEmail"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginTop="10dp"
-        android:hint="Current Password"
-        app:boxBackgroundMode="outline"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:layout_marginEnd="32dp"
+        android:hint="@string/phone_number"
+        app:boxBackgroundMode="outline">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -91,16 +92,16 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/etNewPassword"
-        android:layout_below="@id/etCurrentPassword"
+        android:id="@+id/etlocation"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/etphone"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginTop="10dp"
-        android:hint="New Password"
-        app:boxBackgroundMode="outline"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:layout_marginEnd="32dp"
+        android:hint="@string/location"
+        app:boxBackgroundMode="outline">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -117,7 +118,7 @@
         android:layout_centerInParent="true"
         android:text="Save Changes"
         android:textColor="#ffffff"
-        android:layout_below="@id/etNewPassword"/>
+        android:layout_below="@id/etlocation"/>
 
 
 </RelativeLayout>
