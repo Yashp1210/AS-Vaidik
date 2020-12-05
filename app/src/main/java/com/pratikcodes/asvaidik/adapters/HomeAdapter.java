@@ -16,6 +16,7 @@ import com.pratikcodes.asvaidik.ContactActivity;
 import com.pratikcodes.asvaidik.R;
 import com.pratikcodes.asvaidik.ReqActivity;
 import com.pratikcodes.asvaidik.TeamActivity;
+import com.pratikcodes.asvaidik.TestimonialsActivity;
 import com.pratikcodes.asvaidik.models.HomeModel;
 
 import java.util.ArrayList;
@@ -64,7 +65,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.viewHolder> {
                         intent = new Intent(context, ContactActivity.class);
                         break;
                     case 3:
-                        Toast.makeText(context, "Testimonials", Toast.LENGTH_SHORT).show();
+                        intent = new Intent(context, TestimonialsActivity.class);
                         break;
 
                 }
