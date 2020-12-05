@@ -54,6 +54,14 @@ public class LogInActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mReference = FirebaseDatabase.getInstance().getReference("users");
 
+        btn_forget_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LogInActivity.this, ForgotPasswordActivity.class);
+                startActivity(intent);
+            }
+        });
+
         btn_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,7 +134,6 @@ public class LogInActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser user) {
         try {
             if (user != null) {
-                Toast.makeText(LogInActivity.this, "Logged in using google", Toast.LENGTH_SHORT).show();
                 finish();
                 Intent intent = new Intent(LogInActivity.this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
