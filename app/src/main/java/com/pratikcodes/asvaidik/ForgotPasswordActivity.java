@@ -81,8 +81,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(ForgotPasswordActivity.this, "Email link sent", Toast.LENGTH_SHORT).show();
-                    finish();
-                    startActivity(new Intent(ForgotPasswordActivity.this, MainActivity.class));
                 } else {
                     Toast.makeText(ForgotPasswordActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
