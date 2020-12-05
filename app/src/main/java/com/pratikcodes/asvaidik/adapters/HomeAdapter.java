@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.pratikcodes.asvaidik.ContactActivity;
 import com.pratikcodes.asvaidik.R;
 import com.pratikcodes.asvaidik.ReqActivity;
 import com.pratikcodes.asvaidik.TeamActivity;
@@ -60,7 +61,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.viewHolder> {
                         intent = new Intent(context, TeamActivity.class);
                         break;
                     case 2:
-                        Toast.makeText(context, "Contact", Toast.LENGTH_SHORT).show();
+                        intent = new Intent(context, ContactActivity.class);
                         break;
                     case 3:
                         Toast.makeText(context, "Testimonials", Toast.LENGTH_SHORT).show();
