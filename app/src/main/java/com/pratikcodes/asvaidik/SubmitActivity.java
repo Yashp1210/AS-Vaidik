@@ -1,4 +1,4 @@
-          package com.pratikcodes.asvaidik;
+package com.pratikcodes.asvaidik;
 
 import androidx.appcompat.app.AppCompatActivity;
 
