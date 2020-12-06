@@ -50,7 +50,7 @@ public class SubmitActivity extends AppCompatActivity {
 
         confirm.setOnClickListener(v -> {
             Intent mail = new Intent(Intent.ACTION_VIEW);
-            Uri data = Uri.parse("mailto:?subject=" + "Software Request From " + nameOrder + "&body=" + "Name : "+ nameOrder +"\nPhone : " + phoneOrder + "\nLocation : " + locationOrder + "\nType : " + typeOrder + "\ncategory : " +categoryOrder+ "\nDescription : "+descriptionOrder +"&to=" + "frostpratik03@gmail.com");
+            Uri data = Uri.parse("mailto:?subject=" + "Software Request From " + nameOrder + "&body=" + "Name : "+ nameOrder +"\n\nPhone : " + phoneOrder + "\n\nLocation : " + locationOrder + "\n\nType : " + typeOrder + "\n\ncategory : " +categoryOrder+ "\nDescription : "+descriptionOrder +"&to=" + "frostpratik03@gmail.com");
             mail.setData(data);
             startActivity(Intent.createChooser(mail, "Send Email to us.."));
         });
