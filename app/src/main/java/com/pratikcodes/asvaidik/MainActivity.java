@@ -1,27 +1,31 @@
 package com.pratikcodes.asvaidik;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.pratikcodes.asvaidik.fragments.HomeFragment;
-import com.pratikcodes.asvaidik.fragments.ProfileFragment;
+import com.pratikcodes.asvaidik.fragments.AboutFragment;
 
 
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView nav;
     FloatingActionButton fab;
+    Toolbar tool;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         nav = findViewById(R.id.navhome);
         fab = findViewById(R.id.fab_req);
+        tool = findViewById(R.id.hometool);
+        setSupportActionBar(tool);
 
         HomeFragment fragment = new HomeFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.screen,fragment).commit();
@@ -50,10 +54,20 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.profile:
-                ProfileFragment profile = new ProfileFragment();
+                AboutFragment profile = new AboutFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.screen,profile).commit();
                 break;
         }
         return true;
     };
+
+
 }
+
+
+
+
+
+
+
+
