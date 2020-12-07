@@ -32,7 +32,7 @@ public class ContactActivity extends AppCompatActivity {
                String usermsg = msg.getEditText().getText().toString().trim();
                 if(!useremail.isEmpty() && !usermsg.isEmpty()) {
                     Intent mail = new Intent(Intent.ACTION_VIEW);
-                    Uri data = Uri.parse("mailto:?subject=" + "" + "&body=" + usermsg + "&to=" + "frostpratik03@gmail.com");
+                    Uri data = Uri.parse("mailto:?subject=" + "" + "&body=" + usermsg + "&to=" + "shuklasatyam456@gmail.com");
                     mail.setData(data);
                     startActivity(Intent.createChooser(mail, "Send Email to us.."));
                 }

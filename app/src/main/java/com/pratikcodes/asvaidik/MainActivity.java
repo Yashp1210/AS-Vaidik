@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.pratikcodes.asvaidik.fragments.HomeFragment;
-import com.pratikcodes.asvaidik.fragments.ProfileFragment;
+import com.pratikcodes.asvaidik.fragments.AboutFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.profile:
-                ProfileFragment profile = new ProfileFragment();
+                AboutFragment profile = new AboutFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.screen,profile).commit();
                 break;
         }
